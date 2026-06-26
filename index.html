@@ -1,232 +1,898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahreen Mustafa | Economist</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    :root {
+      --navy: #1a2744;
+      --navy-mid: #243358;
+      --sage: #4a7c6f;
+      --sage-light: #e8f0ee;
+      --cream: #f8f6f1;
+      --cream-dark: #ede9e0;
+      --text: #1a1a18;
+      --text-mid: #444440;
+      --text-muted: #888880;
+      --border: #d8d4c8;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 246, 241, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: none;
+      border: 1px solid var(--navy);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-cta:hover { background: var(--navy); color: var(--cream); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: start;
+    }
+    .hero-text {}
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .hero-bio {
+      font-size: 1.0625rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .hero-bio strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.25rem;
+    }
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--sage);
+      background: var(--sage-light);
+      border: 1px solid #b8d0cb;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: var(--navy);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--navy-mid); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      padding: 0.65rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--text-mid); color: var(--text); }
+
+    .hero-photo-col {
+      padding-top: 0.5rem;
+    }
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 10px -10px -10px 10px;
+      border: 1.5px solid var(--sage);
+      border-radius: 3px;
+      z-index: 0;
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border-radius: 3px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-affils {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .affil-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .affil-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+    .affil-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .affil-text {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+    .affil-text strong {
+      display: block;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .edu-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--sage);
+    }
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+    .edu-school {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+    .edu-detail {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── RESEARCH ── */
+    .research-sub {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-list { margin-bottom: 3rem; }
+    .pub-item {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .pub-year {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      background: var(--sage);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+    }
+    .pub-year.accepted {
+      background: var(--cream-dark);
+      color: var(--text-muted);
+    }
+    .pub-venue {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+    .pub-authors {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+    .pub-authors em {
+      color: var(--text-mid);
+      font-style: normal;
+      font-weight: 500;
+    }
+    .pub-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .pub-link {
+      font-size: 0.78125rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .pub-link.doi {
+      background: var(--navy);
+      color: white;
+    }
+    .pub-link.doi:hover { background: var(--navy-mid); }
+    .pub-link.scholar {
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+    }
+    .pub-link.scholar:hover { border-color: var(--sage); color: var(--sage); }
+    .abstract-toggle {
+      font-size: 0.78125rem;
+      font-weight: 500;
+      color: var(--sage);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .abstract-toggle::after {
+      content: '↓';
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+    .abstract-toggle.open::after { transform: rotate(180deg); }
+    .abstract-body {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.25rem;
+      border-left: 3px solid var(--sage-light);
+    }
+    .abstract-body.open { display: block; }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-left {}
+    .exp-org {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--sage);
+      margin-bottom: 0.2rem;
+    }
+    .exp-date {
+      font-size: 0.78125rem;
+      color: var(--text-muted);
+    }
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ── AWARDS ── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .award-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .award-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .award-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .award-org {
+      font-size: 0.8125rem;
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      background: var(--navy);
+      color: var(--cream);
+    }
+    .contact-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      color: white;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .contact-sub {
+      font-size: 0.9375rem;
+      color: rgba(248,246,241,0.65);
+      line-height: 1.7;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+    .contact-link-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .contact-link:hover .contact-link-icon { background: rgba(255,255,255,0.16); }
+    .contact-link-text {}
+    .contact-link-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(248,246,241,0.5);
+      margin-bottom: 0.15rem;
+    }
+    .contact-link-value {
+      font-size: 0.9375rem;
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.8125rem;
+      color: rgba(248,246,241,0.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem 2.5rem;
+        gap: 2.5rem;
+      }
+      .hero-photo-col { order: -1; max-width: 220px; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      section { padding: 3rem 1.5rem; }
+    }
+  </style>
 </head>
-
 <body>
 
+<!-- NAV -->
 <nav>
-  <h1>Mahreen Mustafa</h1>
-  <ul>
-  <li><a href="#about">About</a></li>
-  <li><a href="#education">Education</a></li>
-  <li><a href="#research-exp">Research</a></li>
-  <li><a href="#work-exp">Experience</a></li>
-  <li><a href="#awards">Honors & Awards</a></li>
-  <li><a href="#contact">Contact</a></li>
-</ul>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Mahreen Mustafa</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://mahreenmustafa.github.io/cv.pdf" class="nav-cta" target="_blank" rel="noopener">Download CV</a>
+  </div>
 </nav>
-  
 
-<header class="hero">
-  <img src="profile.jpeg" alt="Mahreen Mustafa">
-
+<!-- HERO -->
+<div class="hero">
   <div class="hero-text">
-    <h2>Economist | Policy Researcher</h2>
-    <p>
-      M.Phil. in Public Policy, University of Cambridge.  
-      Focused on development economics, climate policy, and institutions.
+    <p class="hero-eyebrow">Economist &amp; Policy Researcher</p>
+    <h1 class="hero-name">Mahreen<br>Mustafa</h1>
+    <p class="hero-bio">
+      Economic researcher working at the intersection of <strong>climate policy</strong> and <strong>development economics</strong>.
+      Founder of <strong>Ecolligence</strong>, a policy research think tank. M.Phil. in Public Policy from the University of Cambridge.
     </p>
-
-    <div class="links">
-      <a href="cv.pdf" class="btn">Download CV</a>
-      <a href="https://scholar.google.com/citations?user=zmjG_WUAAAAJ&hl=en" target="_blank" class="btn-outline">Google Scholar</a>
-      <a href="https://www.linkedin.com/in/mahreen-mustafa/" class="btn">LinkedIn </a>
+    <div class="hero-tags">
+      <span class="tag">Development Economics</span>
+      <span class="tag">Climate Policy</span>
+      <span class="tag">Macroeconomics</span>
+      <span class="tag">Fiscal Policy</span>
+      <span class="tag">Public Policy</span>
+    </div>
+    <div class="hero-actions">
+      <a href="https://mahreenmustafa.github.io/cv.pdf" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Curriculum Vitae
+      </a>
+      <a href="https://scholar.google.com/citations?user=zmjG_WUAAAAJ&hl=en" class="btn-secondary" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://www.linkedin.com/in/mahreen-mustafa/" class="btn-secondary" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
     </div>
   </div>
-</header>
 
+  <div class="hero-photo-col">
+    <div class="hero-photo-wrap">
+      <img src="https://mahreenmustafa.github.io/profile.jpeg" alt="Mahreen Mustafa" class="hero-photo" />
+    </div>
+    <div class="hero-affils">
+      <p class="affil-label">Affiliations</p>
+      <div class="affil-item">
+        <div class="affil-dot"></div>
+        <div class="affil-text">
+          <strong>University of Cambridge</strong>
+          M.Phil. Public Policy
+        </div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-dot"></div>
+        <div class="affil-text">
+          <strong>Ecolligence</strong>
+          Founder &amp; Director
+        </div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-dot"></div>
+        <div class="affil-text">
+          <strong>ERM</strong>
+          Sustainability Consultant
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
 <section id="about">
-  <h2>About</h2>
-  <p>
-    Economic researcher and consultant working at the intersection of climate policy and development economics.
-    Founder of Ecolligence, a research think tank focused on policy innovation.
-  </p>
+  <div class="section-header">
+    <span class="section-label">01</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-degree">M.Phil. in Public Policy</p>
+      <p class="edu-school">University of Cambridge</p>
+      <p class="edu-detail">Relevant focus: Development Economics &amp; Climate Policy<br>Lady Judy Moody Stuart Scholar</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">B.A. in Economics</p>
+      <p class="edu-school">Asian University for Women</p>
+      <p class="edu-detail">Minors in Mathematics and Finance<br>Valedictorian &middot; AUW Support Foundation Scholar</p>
+    </div>
+  </div>
 </section>
 
-<!-- ✅ Research Interests -->
-<section id="interests">
-  <h2>Research Interests</h2>
-  <p>
-    Development Economics, Macroeconomics, Climate Policy, Public Policy, Fiscal Policy
-  </p>
+<div class="section-divider"></div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-label">02</span>
+    <h2 class="section-title">Research</h2>
+  </div>
+
+  <p class="research-sub">Peer-Reviewed Publications</p>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-venue">Springer Nature</span>
+      </div>
+      <p class="pub-title">Integrating Life Cycle Analyses and Circular Economy: A Pathway Towards Sustainable Development in Bangladesh</p>
+      <p class="pub-authors"><em>Mahreen Mustafa</em></p>
+      <div class="pub-links">
+        <a href="https://doi.org/10.1007/978-3-031-85300-5_15" class="pub-link doi" target="_blank" rel="noopener">DOI</a>
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zmjG_WUAAAAJ&citation_for_view=zmjG_WUAAAAJ:u-x6o8ySG0sC" class="pub-link scholar" target="_blank" rel="noopener">Google Scholar</a>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+      </div>
+      <div class="abstract-body">
+        This paper examines how integrating Life Cycle Analyses (LCA) and Circular Economy (CE) frameworks can address environmental and social challenges in Bangladesh's textile sector. The study identifies tangible benefits including reductions in water and energy consumption, lower carbon emissions, and advancements in waste recycling — all contributing to Sustainable Development Goals (SDGs). It explores the interconnections among LCA, CE, and the SDGs, synthesizing existing literature and empirical data, and examines diverse perspectives from key institutions in Bangladesh. The paper advocates for policy interventions, capacity building, and stakeholder engagement to propel Bangladesh towards a more resource-efficient and socially inclusive future.
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-meta">
+        <span class="pub-year">2020</span>
+        <span class="pub-venue">Springer Nature</span>
+      </div>
+      <p class="pub-title">Community-Based Socioeconomic Development Programs: A Catalyst for SDGs</p>
+      <p class="pub-authors">Shahana Afrose Chowdhury, <em>Mahreen Mustafa</em>, Meherun Ahmed, Nushrat Jahan</p>
+      <div class="pub-links">
+        <a href="https://doi.org/10.1007/978-3-319-95867-5_70" class="pub-link doi" target="_blank" rel="noopener">DOI</a>
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zmjG_WUAAAAJ&citation_for_view=zmjG_WUAAAAJ:u5HHmVD_uO8C" class="pub-link scholar" target="_blank" rel="noopener">Google Scholar</a>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+      </div>
+      <div class="abstract-body">
+        Community-based socioeconomic development programs initiate a process that enables Non-Government Organizations (NGOs) to develop sustainable, long-term programs involving community participation for alleviating poverty — acting as a catalyst to growth and development and meeting the Sustainable Development Goals of the United Nations. These programs broadly aim to improve the livelihoods and living conditions of poor rural communities, with emphasis on women and other vulnerable groups.
+      </div>
+    </div>
+
+  </div>
+
+  <p class="research-sub">Working Papers</p>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-meta">
+        <span class="pub-year accepted">Accepted</span>
+        <span class="pub-venue">Springer Nature</span>
+      </div>
+      <p class="pub-title">Climate Governance, Social Justice, and Peace in Bangladesh: Pathways Toward Poverty Alleviation</p>
+      <p class="pub-authors"><em>Mahreen Mustafa</em></p>
+      <div class="pub-links">
+        <a href="https://scholar.google.com" class="pub-link scholar" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-meta">
+        <span class="pub-year accepted">Accepted</span>
+        <span class="pub-venue">Springer Nature</span>
+      </div>
+      <p class="pub-title">Inflation, Human Development, &amp; Economic Growth in Bangladesh: An ARDL Analysis with Implications for SDG 8</p>
+      <p class="pub-authors"><em>Mahreen Mustafa</em></p>
+      <div class="pub-links">
+        <a href="https://scholar.google.com" class="pub-link scholar" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- ✅ Education -->
-<section id="education">
-  <h2>Education</h2>
+<div class="section-divider"></div>
 
-  <div class="entry">
-    <p><strong>M.Phil. in Public Policy</strong></p>
-    <p>University of Cambridge</p>
-    <p>Relevant focus: Development Economics, Climate Policy</p>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-label">03</span>
+    <h2 class="section-title">Experience</h2>
   </div>
+  <div class="exp-list">
 
-  <div class="entry">
-    <p><strong>B.A. in Economics</strong></p>
-    <p>Asian University for Women</p>
-    <p>Minors: Mathematics and Finance</p>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-org">Ecolligence</p>
+        <p class="exp-date">Founder &amp; Director</p>
+      </div>
+      <div>
+        <p class="exp-role">Research Think Tank</p>
+        <p class="exp-desc">Founded and leads a policy research think tank focused on climate policy innovation, development economics, and evidence-based policy design at the local and international level.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-org">ERM</p>
+        <p class="exp-date">Consultant</p>
+      </div>
+      <div>
+        <p class="exp-role">Environmental Resources Management</p>
+        <p class="exp-desc">Worked on sustainability and climate-related consulting projects, with a focus on policy design and impact evaluation for corporate and government clients.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-org">Outlier</p>
+        <p class="exp-date">Economic Researcher</p>
+      </div>
+      <div>
+        <p class="exp-role">Applied Economics Research</p>
+        <p class="exp-desc">Conducted applied economic research and quantitative analysis on policy-relevant datasets, contributing to research outputs used by practitioners and policymakers.</p>
+      </div>
+    </div>
+
   </div>
-
-</section>
-  
-<!-- ✅ Research Experience (with subsections) -->
-<section id="research-exp">
-  <h2>Research</h2>
-
-  <!-- 🔷 Peer-Reviewed Publications -->
-  <h3>Publications (Peer-Reviewed)</h3>
-
-  <div class="paper">
-    <p>
-      <strong>Integrating Life Cycle Analyses and Circular Economy: A Pathway Towards Sustainable Development in Bangladesh
-</strong> (2025)<br>
-      Mahreen Mustafa<br>
-      <em>Springer Nature</em>
-    </p>
-
-    <button class="toggle-btn">View Abstract</button>
-    <div class="abstract hidden">
-      The textile sector of Bangladesh stands as a major economic pillar, yet it poses substantial environmental and social challenges in its journey towards sustainability. Integrating Life Cycle Analyses (LCA) and Circular Economy (CE) emerges as a crucial strategy to combat environmental degradation, resource scarcity, and socio-economic disparities. This paper underscores the significance of LCA and CE frameworks in enhancing resource efficiency, mitigating harmful environmental impacts, and fostering inclusive growth in Bangladesh’s textile industry. Through applying these frameworks, the study identifies tangible benefits, such as reductions in water and energy consumption, lower carbon emissions, and advancements in waste recycling processes, all of which contribute to achieving Sustainable Development Goals (SDGs) in Bangladesh. By embracing a comprehensive and holistic approach that encompasses the entire product lifecycle and emphasizes circularity, Bangladesh can unlock pathways for sustainable development in the textile sector while confronting urgent environmental and social concerns. This study explores the interconnections among LCA, CE, and the Sustainable Development Goals (SDGs) in Bangladesh, synthesizing existing literature and empirical data to illuminate their implications. It delves into the synergies between LCA and CE, highlighting their complementary roles in reducing resource depletion, waste generation, and environmental harm across product lifecycles, including specific examples such as improved textile recycling initiatives and reductions in harmful chemical usage. Additionally, the paper examines diverse perspectives from key institutions in Bangladesh, assessing prospects, practices, and challenges of LCA and CE implementation. Identifying barriers hindering the adoption of LCA and CE practices, including policy, technical, and public participation obstacles, this paper offers insights for policymakers and lays the groundwork for future research endeavors. It emphasizes interdisciplinary approaches to strengthen the relationship between LCA and CE as a sustainable metric, advocating for policy interventions, capacity building, and stakeholder engagement. Ultimately, this research underscores the pivotal roles of LCA and CE, especially within the textile industry, in propelling Bangladesh towards a more resource-efficient, environmentally sustainable, and socially inclusive future, aligned with the SDGs.
-    </div>
-
-    <div class="paper-links">
-      <a href="https://doi.org/10.1007/978-3-031-85300-5_15" target="_blank">DOI</a>
-      <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zmjG_WUAAAAJ&citation_for_view=zmjG_WUAAAAJ:u-x6o8ySG0sC" target="_blank">Google Scholar</a>
-    </div>
-  </div>
-
-  <!-- 🔷 Another Publication -->
-  <div class="paper">
-    <p>
-      <strong>Community-Based Socioeconomic Development Programs: A Catalyst for SDGs</strong> (2020)<br>
-      Shahana Afrose Chowdhury, Mahreen Mustafa, Meherun Ahmed, Nushrat Jahan<br>
-      <em>Springer Nature</em>
-    </p>
-
-    <button class="toggle-btn">View Abstract</button>
-    <div class="abstract hidden">
-      Community-based socioeconomic development programs initiate a process that enables Non-Government Organizations (NGOs) to develop a sustainable and long-term program involving community participation for alleviating poverty that acts as a catalyst to growth and development and meeting Sustainable Development Goals of the United Nations. Generally the broad objective of these programs is to improve the livelihoods and living conditions of poor rural communities with emphasis on women and other vulnerable groups.
-    </div>
-
-    <div class="paper-links">
-      <a href="https://doi.org/10.1007/978-3-319-95867-5_70" target="_blank">DOI</a>
-      <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zmjG_WUAAAAJ&citation_for_view=zmjG_WUAAAAJ:u5HHmVD_uO8C" target="_blank">Google Scholar</a>
-    </div>
-  </div>
-
-  <!-- 🔷 Working Papers -->
-  <h3>Working Papers</h3>
-
-  <div class="paper">
-    <p>
-      <strong>Climate Governance, Social Justice, and Peace in Bangladesh: Pathways Toward Poverty Alleviation</strong> (Accepted)<br>
-      Mahreen Mustafa<br>
-      <em>Springer Nature</em>
-    </p>
-
-    <button class="toggle-btn">View Abstract</button>
-    <div class="abstract hidden">
-      To be added.
-    </div>
-
-    <div class="paper-links">
-      <a href="https://scholar.google.com" target="_blank">
-        Google Scholar
-      </a>
-    </div>
-  </div>
-
-  <div class="paper">
-    <p>
-      <strong>Inflation,Human Development, & Economic Growth in Bangladesh: An ARDL Analysis with Implications for SDG 8</strong> (Accepted)<br>
-      Mahreen Mustafa<br>
-      <em>Springer Nature</em>
-    </p>
-
-    <button class="toggle-btn">View Abstract</button>
-    <div class="abstract hidden">
-      To be added.
-    </div>
-
-    <div class="paper-links">
-      <a href="https://scholar.google.com" target="_blank">
-        Google Scholar
-      </a>
-    </div>
-  </div>
-
 </section>
 
+<div class="section-divider"></div>
 
-<!-- ✅ Work Experience -->
-<section id="work-exp">
-  <h2>Work Experience</h2>
-
-  <div class="entry">
-    <p><strong>Consultant – ERM (Environmental Resources Management)</strong></p>
-    <p>
-      Worked on sustainability and climate-related consulting projects, focusing on policy and impact evaluation.
-    </p>
-  </div>
-
-  <div class="entry">
-    <p><strong>Economic Researcher – Outlier</strong></p>
-    <p>
-      Conducted applied research and economic analysis on policy-relevant datasets.
-    </p>
-  </div>
-
-</section>
-
+<!-- AWARDS -->
 <section id="awards">
-  <h2>Honors & Awards</h2>
-
-  <div class="entry">
-    <p><strong>Lady Judy Moody Stuart Scholar</strong></p>
-    <p>University of Cambridge</p>
+  <div class="section-header">
+    <span class="section-label">04</span>
+    <h2 class="section-title">Honors &amp; Awards</h2>
   </div>
-
-  <div class="entry">
-    <p><strong>Valedictorian</strong></p>
-    <p>Asian University for Women</p>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-icon">🎓</div>
+      <p class="award-name">Lady Judy Moody Stuart Scholar</p>
+      <p class="award-org">University of Cambridge</p>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🏅</div>
+      <p class="award-name">Valedictorian</p>
+      <p class="award-org">Asian University for Women</p>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">✦</div>
+      <p class="award-name">AUW Support Foundation Scholar</p>
+      <p class="award-org">Asian University for Women</p>
+    </div>
   </div>
-
-  <div class="entry">
-    <p><strong>AUW Support Foundation Scholar</strong></p>
-  </div>
-
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: mm2462@cantab.ac.uk </p>
-  <p>LinkedIn: https://www.linkedin.com/in/mahreen-mustafa/ </p>
-</section>
+<!-- CONTACT -->
+<div class="contact-wrapper" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-heading">Get in touch</h2>
+      <p class="contact-sub">Open to research collaborations, policy consulting engagements, and speaking opportunities in development economics and climate policy.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:mm2462@cantab.ac.uk" class="contact-link">
+        <div class="contact-link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <p class="contact-link-label">Email</p>
+          <p class="contact-link-value">mm2462@cantab.ac.uk</p>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/mahreen-mustafa/" class="contact-link" target="_blank" rel="noopener">
+        <div class="contact-link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <p class="contact-link-label">LinkedIn</p>
+          <p class="contact-link-value">mahreen-mustafa</p>
+        </div>
+      </a>
+      <a href="https://scholar.google.com/citations?user=zmjG_WUAAAAJ&hl=en" class="contact-link" target="_blank" rel="noopener">
+        <div class="contact-link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <p class="contact-link-label">Google Scholar</p>
+          <p class="contact-link-value">View publications</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <footer>
-  <p>© 2026 Mahreen Mustafa</p>
+  <p>&copy; 2026 Mahreen Mustafa &middot; Cambridge &amp; Beyond</p>
 </footer>
 
 <script>
-  const buttons = document.querySelectorAll(".toggle-btn");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      const abstract = button.nextElementSibling;
-      abstract.classList.toggle("hidden");
-
-      button.textContent = abstract.classList.contains("hidden")
-        ? "View Abstract"
-        : "Hide Abstract";
-    });
-  });
+  function toggleAbstract(btn) {
+    const body = btn.closest('.pub-item').querySelector('.abstract-body');
+    const open = body.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.textContent = open ? 'Hide abstract' : 'Abstract';
+    if (open) btn.classList.add('open');
+  }
 </script>
 
 </body>
